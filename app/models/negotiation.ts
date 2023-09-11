@@ -1,27 +1,27 @@
 export class Negotiation {
-    #date;
-    #qtde;
-    #value;
+    private _date;
+    private _qtde;
+    private _value;
     
     constructor(date, qtde, value){
-        this.#date = date;
-        this.#qtde = qtde;
-        this.#value = value;
+        this._date = date;
+        this._qtde = qtde;
+        this._value = value;
     }
 
     getDate() {
-        return this.#date;
+        return this._date;
     }
 
     getQtde(){
-        return this.#qtde;
+        return this._qtde;
     }
 
     getValue(){
-        return this.#value();
+        return this._value;
     }
 
     getVolume(){
-        return this.#qtde * this.#value;
+        return this._qtde * this._value;
     }
 }
