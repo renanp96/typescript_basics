@@ -1,0 +1,4 @@
+Regras do modelo de uma negociação:
+-Não pode ser alterada depos de criada.
+-Obrigatoriamente deve ter uma data, quantidade e valor.
+-O volume é calculado multiplicando-se a quantidade negociada no dia pelo valor negociado.
