@@ -2,3 +2,8 @@ Regras do modelo de uma negociação:
 -Não pode ser alterada depos de criada.
 -Obrigatoriamente deve ter uma data, quantidade e valor.
 -O volume é calculado multiplicando-se a quantidade negociada no dia pelo valor negociado.
+
+'dist' é o diretorio contendo os arquivos .js(javascript) que serão carregado e interpretados pelo navegador.
+'app' é o diretorio onde ficará os arquivos .ts(typescript) da aplicação.
+
+tsconfig.json é o arquivo de configuração da linguagem typescript.
