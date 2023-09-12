@@ -12,6 +12,9 @@ export class NegotiationController {
         this.inputValue = document.querySelector('#valor');
         this.negotiationsView.update(this.negotiations);
     }
+    /**
+     * Adds a new negotiation to the list, updating the view, and displays a message.
+     */
     adds() {
         const negotiation = this.createNegotiation();
         this.negotiations.addsNegotiation(negotiation);
@@ -19,6 +22,11 @@ export class NegotiationController {
         this.messageView.update("Negociacao adicionada");
         console.log(this.negotiations.listNegotiation());
     }
+    /**
+     * Creates a new Negotiation object based on user input.
+     *
+     * @returns {Object|Negotiation} - A new Negotiation object.
+     */
     createNegotiation() {
         const exp = /-/g;
         const date = new Date(this.inputDate.value.replace(exp, ','));

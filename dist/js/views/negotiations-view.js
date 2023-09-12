@@ -6,6 +6,7 @@ export class NegotiationView extends View {
      *
      * @param {Object|Negotiations} model - The Negotiations model containing data.
      * @returns {string} - The HTML table element template as string.
+     * @protected
      */
     template(model) {
         return `
@@ -28,16 +29,27 @@ export class NegotiationView extends View {
      *
      * @param {Object|Negotiations} model - The Negotiations model containing data.
      * @returns {string} - The HTML element containing lines.
+     * @private
      */
     generateTableLines(model) {
         return model.listNegotiation().map(item => {
             return `
                 <tr>
-                    <td>${new Intl.DateTimeFormat().format(item.date)}</td>
+                    <td>${this.formartDate(item.date)}</td>
                     <td>${item.qtde}</td>
                     <td>${item.value}</td>
                 </tr>
                 `;
         }).join('');
+    }
+    /**
+     * Format a JavaScript Date object as a localizad date string.
+     *
+     * @param {Date} date - The Date object to be formatted.
+     * @returns {string} - The formatted date string.
+     * @private
+     */
+    formartDate(date) {
+        return new Intl.DateTimeFormat().format(date);
     }
 }
