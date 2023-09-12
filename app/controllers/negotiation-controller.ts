@@ -21,16 +21,11 @@ export class NegotiationController {
     /**
      * Adds a new negotiation to the list, updating the view, and displays a message.
      */
-    adds(): void {
+    public adds(): void {
         const negotiation = this.createNegotiation();
-
         this.negotiations.addsNegotiation(negotiation);
-        this.negotiationsView.update(this.negotiations);
-        this.messageView.update("Negociacao adicionada");
-
-        console.log(this.negotiations.listNegotiation());
-
         this.clearForm();
+        this.updateViews();
     }
 
     /**
@@ -38,7 +33,7 @@ export class NegotiationController {
      * 
      * @returns {Object|Negotiation} - A new Negotiation object.
      */
-    createNegotiation(): Negotiation {
+    private createNegotiation(): Negotiation {
         const exp = /-/g;
         const date = new Date(this.inputDate.value.replace(exp, ','));
         const qtde = parseInt(this.inputQtde.value);
@@ -50,10 +45,15 @@ export class NegotiationController {
     /**
      * Clear the form fields.
      */
-    clearForm() : void {
+    private clearForm() : void {
         this.inputDate.value = '';
         this.inputQtde.value = '';
         this.inputValue.value = '';
         this.inputDate.focus();
+    }
+
+    private updateViews(): void {
+        this.negotiationsView.update(this.negotiations);
+        this.messageView.update("Negociacao adicionada");
     }
 }

@@ -18,10 +18,8 @@ export class NegotiationController {
     adds() {
         const negotiation = this.createNegotiation();
         this.negotiations.addsNegotiation(negotiation);
-        this.negotiationsView.update(this.negotiations);
-        this.messageView.update("Negociacao adicionada");
-        console.log(this.negotiations.listNegotiation());
         this.clearForm();
+        this.updateViews();
     }
     /**
      * Creates a new Negotiation object based on user input.
@@ -43,5 +41,9 @@ export class NegotiationController {
         this.inputQtde.value = '';
         this.inputValue.value = '';
         this.inputDate.focus();
+    }
+    updateViews() {
+        this.negotiationsView.update(this.negotiations);
+        this.messageView.update("Negociacao adicionada");
     }
 }

@@ -19,7 +19,7 @@ export abstract class View<T> {
      * @param {any} model - The model to be rendered and updated.
      * @protected
      */
-    update(model: T): void {
+    public update(model: T): void {
         const template = this.template(model);
         this.element.innerHTML = template;
     }
