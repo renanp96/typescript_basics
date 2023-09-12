@@ -29,6 +29,8 @@ export class NegotiationController {
         this.messageView.update("Negociacao adicionada");
 
         console.log(this.negotiations.listNegotiation());
+
+        this.clearForm();
     }
 
     /**
@@ -43,5 +45,15 @@ export class NegotiationController {
         const value = parseFloat(this.inputValue.value);
 
         return new Negotiation(date, qtde, value);
+    }
+
+    /**
+     * Clear the form fields.
+     */
+    clearForm() : void {
+        this.inputDate.value = '';
+        this.inputQtde.value = '';
+        this.inputValue.value = '';
+        this.inputDate.focus();
     }
 }
