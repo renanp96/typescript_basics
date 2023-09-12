@@ -3,7 +3,13 @@ import { View } from "./view.js";
 
 export class NegotiationView extends View<Negotiations> {
     //Returns an HTML string
-    template(model: Negotiations): string {
+    /**
+     * Generates an HTML table template based on the provided Negotiations model.
+     *
+     * @param {Object|Negotiations} model - The Negotiations model containing data.
+     * @returns {string} - The HTML table element template as string.
+     */
+    protected template(model: Negotiations): string {
         return `
         <table class="table table-hover table_bordered">
             <thead>
@@ -14,7 +20,20 @@ export class NegotiationView extends View<Negotiations> {
                 </tr>
             </thead>
             <tbody>
-            ${model.listNegotiation().map(item => {
+            ${this.generateTableLines(model)}
+            </tbody>
+        </table>
+        `;
+    }
+
+    /**
+     * Generates HTML table lines base on the provided Negotiations model.
+     *
+     * @param {Object|Negotiations} model - The Negotiations model containing data.
+     * @returns {string} - The HTML element containing lines.
+     */
+    private generateTableLines(model: Negotiations): string {
+        return model.listNegotiation().map(item => {
             return `
                 <tr>
                     <td>${new Intl.DateTimeFormat().format(item.date)}</td>
@@ -22,9 +41,6 @@ export class NegotiationView extends View<Negotiations> {
                     <td>${item.value}</td>
                 </tr>
                 `;
-        }).join('')}
-            </tbody>
-        </table>
-        `;
+        }).join('')
     }
 }
