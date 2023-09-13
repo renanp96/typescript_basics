@@ -1,3 +1,4 @@
+import { DaysOfWeek } from "../enums/daysOfWeek.js";
 import { Negotiation } from "../models/negotiation.js";
 import { Negotiations } from "../models/negotiations.js";
 import { MessageView } from "../views/message-view.js";
@@ -17,6 +18,10 @@ export class NegotiationController {
      */
     adds() {
         const negotiation = this.createNegotiation();
+        if (!this.isWeekday(negotiation.date)) {
+            this.messageView.update("Negociações são valdias apenas em dias uteis.");
+            return;
+        }
         this.negotiations.addsNegotiation(negotiation);
         this.clearForm();
         this.updateViews();
@@ -42,8 +47,20 @@ export class NegotiationController {
         this.inputValue.value = '';
         this.inputDate.focus();
     }
+    /**
+     * Update the negotiations views after input a new one.
+     */
     updateViews() {
         this.negotiationsView.update(this.negotiations);
-        this.messageView.update("Negociacao adicionada");
+        this.messageView.update("Negociação adicionada");
+    }
+    /**
+     * Validates the weekday.
+     *
+     * @param {Date} date - The input date.
+     * @returns {boolean}
+     */
+    isWeekday(date) {
+        return date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY;
     }
 }
