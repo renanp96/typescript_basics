@@ -7,3 +7,15 @@ Regras do modelo de uma negociação:
 'app' é o diretorio onde ficará os arquivos .ts(typescript) da aplicação.
 
 tsconfig.json é o arquivo de configuração da linguagem typescript.
+Exemplo de um arquivo tsconfig:
+{
+    "compilerOptions": {
+        "outDir": "dist/js",
+        "target": "ES6",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "strictNullChecks": true
+    },
+    "include": ["app/**/*"]
+}
