@@ -13,9 +13,6 @@ export class NegotiationController {
         this.inputValue = document.querySelector('#valor');
         this.negotiationsView.update(this.negotiations);
     }
-    /**
-     * Adds a new negotiation to the list, updating the view, and displays a message.
-     */
     adds() {
         const negotiation = Negotiation.createOf(this.inputDate.value, this.inputQtde.value, this.inputValue.value);
         if (!this.isWeekday(negotiation.date)) {
@@ -26,28 +23,16 @@ export class NegotiationController {
         this.clearForm();
         this.updateViews();
     }
-    /**
-     * Clear the form fields.
-     */
     clearForm() {
         this.inputDate.value = '';
         this.inputQtde.value = '';
         this.inputValue.value = '';
         this.inputDate.focus();
     }
-    /**
-     * Update the negotiations views after input a new one.
-     */
     updateViews() {
         this.negotiationsView.update(this.negotiations);
         this.messageView.update("Negociação adicionada");
     }
-    /**
-     * Validates the weekday.
-     *
-     * @param {Date} date - The input date.
-     * @returns {boolean}
-     */
     isWeekday(date) {
         return date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY;
     }

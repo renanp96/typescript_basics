@@ -3,7 +3,13 @@ export abstract class View<T> {
     private escape = false;
 
     constructor(selector: string, escape?: boolean) {
-        this.element = document.querySelector(selector);
+        const element = document.querySelector(selector); 
+        if(element){
+            this.element =element as HTMLElement;
+        } else{
+            throw Error(`Erro no seletor ${selector}! O elemento não existe na DOM do formulario.`);
+        }
+
         if(escape){
             this.escape = escape;
         }

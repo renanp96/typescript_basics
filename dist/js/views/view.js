@@ -1,17 +1,17 @@
 export class View {
     constructor(selector, escape) {
         this.escape = false;
-        this.element = document.querySelector(selector);
+        const element = document.querySelector(selector);
+        if (element) {
+            this.element = element;
+        }
+        else {
+            throw Error(`Erro no seletor ${selector}! O elemento não existe na DOM do formulario.`);
+        }
         if (escape) {
             this.escape = escape;
         }
     }
-    /**
-     * Updates the view with the provided model.
-     *
-     * @param {any} model - The model to be rendered and updated.
-     * @protected
-     */
     update(model) {
         let template = this.template(model);
         if (this.escape) {
