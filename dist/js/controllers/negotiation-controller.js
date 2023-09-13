@@ -17,7 +17,7 @@ export class NegotiationController {
      * Adds a new negotiation to the list, updating the view, and displays a message.
      */
     adds() {
-        const negotiation = this.createNegotiation();
+        const negotiation = Negotiation.createOf(this.inputDate.value, this.inputQtde.value, this.inputValue.value);
         if (!this.isWeekday(negotiation.date)) {
             this.messageView.update("Negociações são valdias apenas em dias uteis.");
             return;
@@ -25,18 +25,6 @@ export class NegotiationController {
         this.negotiations.addsNegotiation(negotiation);
         this.clearForm();
         this.updateViews();
-    }
-    /**
-     * Creates a new Negotiation object based on user input.
-     *
-     * @returns {Object|Negotiation} - A new Negotiation object.
-     */
-    createNegotiation() {
-        const exp = /-/g;
-        const date = new Date(this.inputDate.value.replace(exp, ','));
-        const qtde = parseInt(this.inputQtde.value);
-        const value = parseFloat(this.inputValue.value);
-        return new Negotiation(date, qtde, value);
     }
     /**
      * Clear the form fields.
