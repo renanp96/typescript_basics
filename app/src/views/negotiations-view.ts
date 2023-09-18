@@ -10,7 +10,7 @@ export class NegotiationView extends View<Negotiations> {
      * @returns {string} - The HTML table element template as string.
      * @protected
      */
-    @escape
+    //@escape
     protected template(model: Negotiations): string {
         return `
         <table class="table table-hover table_bordered">
