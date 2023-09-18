@@ -32,7 +32,7 @@ export abstract class View<T> {
      * @param {any} model - The model to be rendered and updated.
      * @protected
      */
-    @inspect()
+    @inspect
     @loginExecutionTime(true)
     public update(model: T): void {
         let template = this.template(model);
