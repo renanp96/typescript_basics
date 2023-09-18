@@ -1,3 +1,6 @@
+import { inspect } from "../decorators/inspect.js";
+import { loginExecutionTime } from "../decorators/loginExecutionTime.js";
+
 export abstract class View<T> {
     protected element: HTMLElement;
     private escape = false;
@@ -29,6 +32,8 @@ export abstract class View<T> {
      * @param {any} model - The model to be rendered and updated.
      * @protected
      */
+    @inspect()
+    @loginExecutionTime(true)
     public update(model: T): void {
         let template = this.template(model);
 

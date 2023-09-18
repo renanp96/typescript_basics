@@ -23,7 +23,7 @@ export class NegotiationController {
     /**
      * Adds a new negotiation to the list, updating the view, and displays a message.
      */
-    //@loginExecutionTime()
+    @loginExecutionTime()
     public adds(): void {
         const negotiation = Negotiation.createOf(
             this.inputDate.value,
