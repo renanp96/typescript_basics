@@ -3,18 +3,13 @@ import { loginExecutionTime } from "../decorators/loginExecutionTime.js";
 
 export abstract class View<T> {
     protected element: HTMLElement;
-    private escape = false;
 
-    constructor(selector: string, escape?: boolean) {
+    constructor(selector: string, ) {
         const element = document.querySelector(selector);
         if (element) {
             this.element = element as HTMLElement;
         } else {
             throw Error(`Erro no seletor ${selector}! O elemento não existe na DOM do formulario.`);
-        }
-
-        if (escape) {
-            this.escape = escape;
         }
     }
 
@@ -36,11 +31,6 @@ export abstract class View<T> {
     @loginExecutionTime(true)
     public update(model: T): void {
         let template = this.template(model);
-
-        if (this.escape) {
-            template = template.replace(/<script>[\s\S]*?<\/script>/, '');
-        }
-
         this.element.innerHTML = template;
     }
 }

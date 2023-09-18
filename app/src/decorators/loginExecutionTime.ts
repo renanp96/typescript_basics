@@ -1,3 +1,9 @@
+/**
+ * Decorator for measuring the execution time of a method.
+ *
+ * @param {boolean} seconds - Indicates whether to display the time in seconds (default is milliseconds).
+ * @returns {Function} - A decorator function.
+ */
 export function loginExecutionTime(seconds: boolean = false) {
     return function (
         target: any,

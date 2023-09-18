@@ -1,8 +1,8 @@
+import { escape } from "../decorators/escape.js";
 import { Negotiations } from "../models/negotiations.js";
 import { View } from "./view.js";
 
 export class NegotiationView extends View<Negotiations> {
-    //Returns an HTML string
     /**
      * Generates an HTML table template based on the provided Negotiations model.
      *
@@ -10,6 +10,7 @@ export class NegotiationView extends View<Negotiations> {
      * @returns {string} - The HTML table element template as string.
      * @protected
      */
+    @escape
     protected template(model: Negotiations): string {
         return `
         <table class="table table-hover table_bordered">
@@ -53,7 +54,7 @@ export class NegotiationView extends View<Negotiations> {
      * @returns {string} - The formatted date string.
      * @private
      */
-    private formartDate(date: Date){
+    private formartDate(date: Date) {
         return new Intl.DateTimeFormat().format(date);
     }
 }

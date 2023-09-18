@@ -1,3 +1,11 @@
+/**
+ * Decorator for logging method calls, parameters, and return values.
+ *
+ * @param {any} target - The target class.
+ * @param {string} propertyKey - The name of the decorated method.
+ * @param {PropertyDescriptor} descriptor - The property descriptor of the decorated method.
+ * @returns {PropertyDescriptor} - The modified property descriptor.
+ */
 export function inspect(
     target: any,
     propertyKey: string,
