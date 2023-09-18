@@ -3,14 +3,14 @@ export abstract class View<T> {
     private escape = false;
 
     constructor(selector: string, escape?: boolean) {
-        const element = document.querySelector(selector); 
-        if(element){
-            this.element =element as HTMLElement;
-        } else{
+        const element = document.querySelector(selector);
+        if (element) {
+            this.element = element as HTMLElement;
+        } else {
             throw Error(`Erro no seletor ${selector}! O elemento não existe na DOM do formulario.`);
         }
 
-        if(escape){
+        if (escape) {
             this.escape = escape;
         }
     }
@@ -32,7 +32,7 @@ export abstract class View<T> {
     public update(model: T): void {
         let template = this.template(model);
 
-        if(this.escape){
+        if (this.escape) {
             template = template.replace(/<script>[\s\S]*?<\/script>/, '');
         }
 

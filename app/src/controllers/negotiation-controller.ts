@@ -1,3 +1,4 @@
+import { loginExecutionTime } from "../decorators/loginExecutionTime.js";
 import { DaysOfWeek } from "../enums/daysOfWeek.js";
 import { Negotiation } from "../models/negotiation.js";
 import { Negotiations } from "../models/negotiations.js";
@@ -22,6 +23,7 @@ export class NegotiationController {
     /**
      * Adds a new negotiation to the list, updating the view, and displays a message.
      */
+    //@loginExecutionTime()
     public adds(): void {
         const negotiation = Negotiation.createOf(
             this.inputDate.value,
