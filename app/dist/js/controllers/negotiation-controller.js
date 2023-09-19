@@ -10,6 +10,7 @@ import { loginExecutionTime } from "../decorators/loginExecutionTime.js";
 import { DaysOfWeek } from "../enums/daysOfWeek.js";
 import { Negotiation } from "../models/negotiation.js";
 import { Negotiations } from "../models/negotiations.js";
+import { NegotiationService } from "../services/negotiationService.js";
 import { MessageView } from "../views/message-view.js";
 import { NegotiationView } from "../views/negotiations-view.js";
 export class NegotiationController {
@@ -17,6 +18,7 @@ export class NegotiationController {
         this.negotiations = new Negotiations();
         this.negotiationsView = new NegotiationView('#negociacoesView');
         this.messageView = new MessageView('#mensagemView');
+        this.negotiationService = new NegotiationService();
         this.negotiationsView.update(this.negotiations);
     }
     adds() {
@@ -38,6 +40,15 @@ export class NegotiationController {
     updateViews() {
         this.negotiationsView.update(this.negotiations);
         this.messageView.update("Negociação adicionada");
+    }
+    getNegotiationValues() {
+        this.negotiationService.getNegotiationsOfDay()
+            .then(negotiationNow => {
+            for (let n of negotiationNow) {
+                this.negotiations.addsNegotiation(n);
+            }
+            this.negotiationsView.update(this.negotiations);
+        });
     }
     isWeekday(date) {
         return date.getDay() > DaysOfWeek.SUNDAY && date.getDay() < DaysOfWeek.SATURDAY;
