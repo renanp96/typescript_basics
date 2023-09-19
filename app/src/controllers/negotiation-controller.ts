@@ -47,6 +47,7 @@ export class NegotiationController {
         }
 
         this.negotiations.addsNegotiation(negotiation);
+        console.log(negotiation.toString());
         this.clearForm();
         this.updateViews();
     }

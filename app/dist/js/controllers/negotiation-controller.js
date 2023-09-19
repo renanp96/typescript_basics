@@ -28,6 +28,7 @@ export class NegotiationController {
             return;
         }
         this.negotiations.addsNegotiation(negotiation);
+        console.log(negotiation.toString());
         this.clearForm();
         this.updateViews();
     }

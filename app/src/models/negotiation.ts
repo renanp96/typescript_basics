@@ -14,6 +14,10 @@ export class Negotiation {
         return this.qtde * this.value;
     }
 
+    public toString(): String {
+        return `Data: ${this.date},\n Quantidade: ${this.qtde},\n Valor: ${this.value}`;
+    }
+
     /**
      * Creates a new Negotiation object from string representatios of date, quantity, and value.
      * 

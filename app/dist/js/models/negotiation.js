@@ -11,6 +11,9 @@ export class Negotiation {
     get volume() {
         return this.qtde * this.value;
     }
+    toString() {
+        return `Data: ${this.date},\n Quantidade: ${this.qtde},\n Valor: ${this.value}`;
+    }
     static createOf(dateStr, qtdeStr, valorStr) {
         const exp = /-/g;
         const date = new Date(dateStr.replace(exp, ','));
