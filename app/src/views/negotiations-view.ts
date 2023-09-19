@@ -10,7 +10,7 @@ export class NegotiationView extends View<Negotiations> {
      * @returns {string} - The HTML table element template as string.
      * @protected
      */
-    //@escape
+    @escape
     protected template(model: Negotiations): string {
         return `
         <table class="table table-hover table_bordered">
@@ -39,7 +39,7 @@ export class NegotiationView extends View<Negotiations> {
         return model.listNegotiation().map(item => {
             return `
                 <tr>
-                    <td>${this.formartDate(item.date)}</td>
+                    <td>${this.formatDate(item.date)}</td>
                     <td>${item.qtde}</td>
                     <td>${item.value}</td>
                 </tr>
@@ -54,7 +54,7 @@ export class NegotiationView extends View<Negotiations> {
      * @returns {string} - The formatted date string.
      * @private
      */
-    private formartDate(date: Date) {
+    private formatDate(date: Date){
         return new Intl.DateTimeFormat().format(date);
     }
 }
