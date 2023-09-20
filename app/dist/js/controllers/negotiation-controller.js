@@ -13,6 +13,7 @@ import { Negotiations } from "../models/negotiations.js";
 import { NegotiationService } from "../services/negotiationService.js";
 import { MessageView } from "../views/message-view.js";
 import { NegotiationView } from "../views/negotiations-view.js";
+import { print } from "../utils/print.js";
 export class NegotiationController {
     constructor() {
         this.negotiations = new Negotiations();
@@ -28,7 +29,7 @@ export class NegotiationController {
             return;
         }
         this.negotiations.addsNegotiation(negotiation);
-        console.log(negotiation.toString());
+        print(negotiation, this.negotiations);
         this.clearForm();
         this.updateViews();
     }

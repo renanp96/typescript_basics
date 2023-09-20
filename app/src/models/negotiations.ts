@@ -1,13 +1,14 @@
+import { Printable } from "../utils/printable.js";
 import { Negotiation } from "./negotiation.js";
 
-export class Negotiations {
-    private negotiations: Array<Negotiation> = []; //or Negotiation[] for a more simple using.
+export class Negotiations implements Printable {
+    private negotiations: Negotiation[] = []; //or Negotiation[] for a more simple using.
 
-    addsNegotiation(negotiation: Negotiation) {
+    public addsNegotiation(negotiation: Negotiation) {
         this.negotiations.push(negotiation);
     }
 
-    listNegotiation(): readonly Negotiation[] {
-        return this.negotiations;
+    public listNegotiation(): readonly Negotiation[] {
+        return this.negotiations;   
     }
 }

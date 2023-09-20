@@ -1,4 +1,6 @@
-export class Negotiation {
+import { Printable } from "../utils/printable.js";
+
+export class Negotiation implements Printable {
     constructor(
         private readonly _date: Date,
         public readonly qtde: number,
@@ -14,7 +16,7 @@ export class Negotiation {
         return this.qtde * this.value;
     }
 
-    public toString(): String {
+    public toString(): string {
         return `Data: ${this.date},\n Quantidade: ${this.qtde},\n Valor: ${this.value}`;
     }
 
