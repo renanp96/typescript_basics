@@ -1,7 +1,6 @@
-import { Comparator } from "../interfaces/comparator.js";
-import { Printable } from "../utils/printable.js";
+import { Model } from "../interfaces/model.js";
 
-export class Negotiation implements Printable, Comparator<Negotiation> {
+export class Negotiation implements Model<Negotiation> {
     constructor(
         private readonly _date: Date,
         public readonly qtde: number,
