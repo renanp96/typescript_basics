@@ -10,12 +10,14 @@ tsconfig.json é o arquivo de configuração da linguagem typescript.
 Exemplo de um arquivo tsconfig:
 {
     "compilerOptions": {
-        "outDir": "dist/js",
+        "outDir": "app/dist/js",
         "target": "ES6",
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
-    "include": ["app/**/*"]
+    "include": ["app/src/**/*"]
 }
