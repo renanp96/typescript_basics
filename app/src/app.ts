@@ -15,7 +15,7 @@ if (form) {
 const importBtn = document.querySelector('#botao-importa');
 if(importBtn){
     importBtn.addEventListener('click', () => {
-        controller.getNegotiationValues();
+        controller.importNegotiations();
     });
 } else {
     throw new Error("Botão não foi encontrado ou instanciado");

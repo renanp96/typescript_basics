@@ -78,10 +78,17 @@ export class NegotiationController {
      * Fetches negotiation data from the server for the current day,
      * adds to the list of negotiation, and updates the negotiations view.
      * 
+     * TODO: refact the method for a better understanding.
+     * 
      * @returns {void}
      */
-    public getNegotiationValues(): void {
+    public importNegotiations(): void {
         this.negotiationService.getNegotiationsOfDay()
+            .then(negotiationsOfDay => {
+                return negotiationsOfDay.filter(negotiationsOfDay => {
+                    return !this.negotiations.listNegotiation().some(negotiation => negotiation.isEquals(negotiationsOfDay));
+                })
+            })
             .then(negotiationNow => {
                 for (let n of negotiationNow) {
                     this.negotiations.addsNegotiation(n);

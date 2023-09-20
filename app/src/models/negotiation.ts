@@ -1,6 +1,7 @@
+import { Comparator } from "../interfaces/comparator.js";
 import { Printable } from "../utils/printable.js";
 
-export class Negotiation implements Printable {
+export class Negotiation implements Printable, Comparator<Negotiation> {
     constructor(
         private readonly _date: Date,
         public readonly qtde: number,
@@ -35,5 +36,11 @@ export class Negotiation implements Printable {
         const value = parseFloat(valorStr);
 
         return new Negotiation(date, qtde, value);
+    }
+
+    public isEquals(negotiation: Negotiation): boolean {
+        return this.date.getDate() === negotiation.date.getDate()
+            && this.date.getMonth() === negotiation.date.getMonth()
+            && this.date.getFullYear() === negotiation.date.getFullYear();
     }
 }

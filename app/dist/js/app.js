@@ -13,7 +13,7 @@ else {
 const importBtn = document.querySelector('#botao-importa');
 if (importBtn) {
     importBtn.addEventListener('click', () => {
-        controller.getNegotiationValues();
+        controller.importNegotiations();
     });
 }
 else {

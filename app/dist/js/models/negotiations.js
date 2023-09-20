@@ -8,4 +8,10 @@ export class Negotiations {
     listNegotiation() {
         return this.negotiations;
     }
+    toString() {
+        return JSON.stringify(this.negotiations, null, 0);
+    }
+    isEquals(object) {
+        return JSON.stringify(this.negotiations) === JSON.stringify(object.listNegotiation());
+    }
 }

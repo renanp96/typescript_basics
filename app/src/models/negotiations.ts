@@ -1,8 +1,9 @@
+import { Comparator } from "../interfaces/comparator.js";
 import { Printable } from "../utils/printable.js";
 import { Negotiation } from "./negotiation.js";
 
-export class Negotiations implements Printable {
-    private negotiations: Negotiation[] = []; //or Negotiation[] for a more simple using.
+export class Negotiations implements Printable, Comparator<Negotiations> {
+    private negotiations: Negotiation[] = [];
 
     public addsNegotiation(negotiation: Negotiation) {
         this.negotiations.push(negotiation);
@@ -10,5 +11,13 @@ export class Negotiations implements Printable {
 
     public listNegotiation(): readonly Negotiation[] {
         return this.negotiations;   
+    }
+
+    public toString(): string {
+        return JSON.stringify(this.negotiations, null, 0);
+    }
+
+    public isEquals(object: Negotiations): boolean {
+        return JSON.stringify(this.negotiations) === JSON.stringify(object.listNegotiation());
     }
 }

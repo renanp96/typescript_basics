@@ -21,4 +21,9 @@ export class Negotiation {
         const value = parseFloat(valorStr);
         return new Negotiation(date, qtde, value);
     }
+    isEquals(negotiation) {
+        return this.date.getDate() === negotiation.date.getDate()
+            && this.date.getMonth() === negotiation.date.getMonth()
+            && this.date.getFullYear() === negotiation.date.getFullYear();
+    }
 }

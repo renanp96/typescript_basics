@@ -43,8 +43,13 @@ export class NegotiationController {
         this.negotiationsView.update(this.negotiations);
         this.messageView.update("Negociação adicionada");
     }
-    getNegotiationValues() {
+    importNegotiations() {
         this.negotiationService.getNegotiationsOfDay()
+            .then(negotiationsOfDay => {
+            return negotiationsOfDay.filter(negotiationsOfDay => {
+                return !this.negotiations.listNegotiation().some(negotiation => negotiation.isEquals(negotiationsOfDay));
+            });
+        })
             .then(negotiationNow => {
             for (let n of negotiationNow) {
                 this.negotiations.addsNegotiation(n);
